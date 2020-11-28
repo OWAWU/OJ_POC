@@ -1,27 +1,17 @@
-import React from 'react';  
-import PropTypes from "prop-types";
-
-class App extends React.Component{
-  state = {
-    count : 0
-  };
-  add = () => {
-    this.setState(cur => ({count : cur.count+1}));
-  };
-  minus = () => {
-    this.setState(cur => ({count : cur.count-1}));
-  };
-  render(){
-  return(
-    <div>
-      <h1>The number is {this.state.count}</h1>
-      <button onClick={this.add}>Add</button>
-      <br></br>
-      <button onClick={this.minus}>Minus </button>
-    </div>
+import React, {useState, useEffect} from "react";
+import { HashRouter, Route } from "react-router-dom"
+import About from "./routes/About";
+import Home from "./routes/Home";
+import Navigation from './components/Navigation';
+function App(){
+    
+    return(
+       <HashRouter>
+           <Navigation /> 
+           <Route path="/" exact={true} component={Home} />
+           <Route path='/about' component={About} />
+       </HashRouter>
+      
     );
-  }
- 
 }
-
-export default App; 
+export default App
